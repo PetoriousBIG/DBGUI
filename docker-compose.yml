@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  web:
+    build: ./react-frontend
+  api:
+    build: ./python-api
+  db:
+    build: ./postgresdb

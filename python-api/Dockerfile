@@ -1,2 +1,8 @@
-FROM alpine
-CMD ["echo", "Hello, this is a placeholder for the Python API Dockerfile!"]
+FROM python:3
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "-u","./Hello.py" ]

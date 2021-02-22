@@ -2,7 +2,19 @@ version: "3.8"
 services:
   web:
     build: ./react-frontend
+    links:
+      - api
   api:
     build: ./python-api
-  db:
-    build: ./postgresdb
+    links:
+      - postgres
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: thedb
+    volumes: 
+      - ./postgresdb/pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
